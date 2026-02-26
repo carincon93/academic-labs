@@ -1,0 +1,18 @@
+{
+  "id": "mig_cnbqqhv5luj6iq2bbhsg",
+  "parentID": "mig_cnbqo5n5luj6iq2bbhog",
+  "checksum": "1:cb08cc594aab8aaa8d005f214cdfae062e5473574892608667555616fff63eb2",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "answer_id",
+          "type": "string",
+          "notNull": true,
+          "defaultValue": "0"
+        },
+        "table": "survey"
+      }
+    }
+  ]
+}

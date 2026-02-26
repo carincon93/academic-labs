@@ -1,0 +1,11 @@
+{
+  "id": "mig_cnbqo5n5luj6iq2bbhog",
+  "checksum": "1:55eccefe20ca193b6eec52b71d0f957a0c98a24fb1cb78f5efc8ca52b7e9649e",
+  "operations": [
+    {
+      "addTable": {
+        "table": "survey"
+      }
+    }
+  ]
+}

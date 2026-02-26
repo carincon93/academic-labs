@@ -1,0 +1,6 @@
+{
+  "databaseURL": "https://carincon93-s-workspace-p2ulc7.us-east-1.xata.sh/db/boowe",
+  "codegen": {
+    "output": "src/xata.ts"
+  }
+}

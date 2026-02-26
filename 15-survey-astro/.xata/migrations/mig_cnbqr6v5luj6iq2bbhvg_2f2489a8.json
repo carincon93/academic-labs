@@ -1,0 +1,16 @@
+{
+  "id": "mig_cnbqr6v5luj6iq2bbhvg",
+  "parentID": "mig_cnbqr375luj6iq2bbhug",
+  "checksum": "1:2f2489a86db075a5d2e9ea83860c40ed5609ebeb0caa95b2fe88f18efb7cdc6d",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "recommendations",
+          "type": "text"
+        },
+        "table": "survey"
+      }
+    }
+  ]
+}

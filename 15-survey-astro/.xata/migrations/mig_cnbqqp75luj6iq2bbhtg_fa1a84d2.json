@@ -1,0 +1,14 @@
+{
+  "id": "mig_cnbqqp75luj6iq2bbhtg",
+  "parentID": "mig_cnbqqhv5luj6iq2bbhsg",
+  "checksum": "1:fa1a84d2217809c6a2bc0b92a8b2cae0639e2f6c23f001eecd1cf0aa99545d20",
+  "operations": [
+    {
+      "renameColumn": {
+        "newName": "question_id",
+        "oldName": "answer_id",
+        "table": "survey"
+      }
+    }
+  ]
+}
