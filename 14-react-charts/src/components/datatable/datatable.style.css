@@ -1,0 +1,11 @@
+table {
+	width: 100%;
+	color: #6e707b;
+}
+
+th {
+	text-align: left;
+	position: sticky;
+	top: 0;
+	background: #26282f;
+}

@@ -1,0 +1,84 @@
+.phone {
+	background: #26282f;
+	width: 372.51px;
+	height: 750px;
+	position: fixed;
+	margin: auto;
+	top: 50px;
+	bottom: 0;
+	border-radius: 0 0 50px 50px;
+}
+.phone.expense-tracker-container {
+	left: 120px;
+}
+
+.donut-chart {
+	z-index: 9999;
+}
+
+.expense-tracker-container #iPhone_12_Pro {
+	position: absolute;
+	z-index: -1;
+	left: -24px;
+	top: -75px;
+}
+
+.phone.income-tracker-container {
+	right: 120px;
+}
+
+.income-tracker-container #iPhone_12_Pro {
+	position: absolute;
+	z-index: -1;
+	left: -24px;
+	top: -75px;
+}
+
+.data-container {
+	position: relative;
+	top: -188px;
+	padding: 15px;
+}
+
+.table-container {
+	height: 148px;
+	margin-bottom: 30px;
+	overflow-y: auto;
+	display: block;
+}
+
+::-webkit-scrollbar {
+	width: 20px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #2b2e38;
+	border-radius: 20px;
+	border: 6px solid transparent;
+	background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #1c1e26;
+}
+
+svg {
+	z-index: -1;
+}
+
+svg rect {
+	fill: none;
+}
+
+svg text {
+	fill: white;
+	font-size: 10px;
+}
+
+svg .google-visualization-tooltip text {
+	fill: #26282f !important;
+}
