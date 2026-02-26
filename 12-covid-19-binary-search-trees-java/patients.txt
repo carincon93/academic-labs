@@ -1,0 +1,5 @@
+4
+3,camila,fever,headache,cough
+2,carlos,cough,fever
+1,juan,cough,headache
+4,luisa,fever
