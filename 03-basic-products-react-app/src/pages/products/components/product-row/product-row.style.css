@@ -1,0 +1,11 @@
+.product-row {
+    margin: 0 auto;
+}
+
+.product-row td {
+    border: 1px solid red;
+}
+
+.text-red {
+    color: red;
+}

@@ -1,0 +1,15 @@
+.search-bar {
+    margin: 0 auto;
+    border: 1px solid blue;
+    padding: 3px;
+    height: 22%;
+    width: 95%;
+}
+
+.input-search {
+    padding: 6px;
+}
+
+.mt-10 {
+    margin-top: 4px;
+}
