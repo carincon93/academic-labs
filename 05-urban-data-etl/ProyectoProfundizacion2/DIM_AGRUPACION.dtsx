@@ -1,0 +1,1520 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/13/2024 1:19:49 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-54L8G8U"
+  DTS:CreatorName="DESKTOP-54L8G8U\Cristian"
+  DTS:DTSID="{B1B9189C-1D2E-4CCE-B06A-F4A742E2CDDB}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5270.0"
+  DTS:LocaleID="9226"
+  DTS:ObjectName="DIM_AGRUPACION"
+  DTS:PackageType="5"
+  DTS:VersionBuild="50"
+  DTS:VersionGUID="{CB1908CA-44A8-445C-B81D-F2E5B3264503}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-54L8G8U.OBSERVATORIO_MUNICIPIOS]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{237AC2E2-70DC-4DF6-8C37-216A681AE29C}"
+      DTS:ObjectName="DESKTOP-54L8G8U.OBSERVATORIO_MUNICIPIOS">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=DESKTOP-54L8G8U;Initial Catalog=OBSERVATORIO_MUNICIPIOS;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{237AC2E2-70DC-4DF6-8C37-216A681AE29C}DESKTOP-54L8G8U.OBSERVATORIO_MUNICIPIOS;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{57313DF8-2CCF-4C5E-9250-D7E8182016EA}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Cristian\source\repos\ProyectoProfundizacion2\Sources\observatorio-municipios.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{670C2698-3B1D-486C-83DB-0CE042F017CB}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ETLExecution">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{BC0FF5E2-006A-4478-BB64-E6783577188D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCounts">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF_Agrupacion"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{26EA22B8-308B-4BE8-BA61-B2561FFCE5A9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF_Agrupacion"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF_Agrupacion\Aggregate"
+              componentClassID="Microsoft.Aggregate"
+              contactInfo="Aggregate;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Aggregates data with functions such as Average, Sum, Count, Max, and Min. For example, group data to compute the sum of sales per product or the average visits per day."
+              name="Aggregate"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                  name="KeyScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                  name="Keys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the approximate number of distinct values in a column that the aggregation counts distinctly. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no CountDistinctScale value is used."
+                  name="CountDistinctScale"
+                  typeConverter="KeyScaleType">0</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the exact number of distinct values in a column that the aggregation counts distinctly. If a CountDistinctScale value is specified, the value in CountDistinctKeys takes precedence."
+                  name="CountDistinctKeys" />
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage by which memory can be extended during the aggregation. Valid values are between 1 and 100."
+                  name="AutoExtendFactor">25</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DF_Agrupacion\Aggregate.Inputs[Aggregate Input 1]"
+                  name="Aggregate Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Agrupacion\Aggregate.Inputs[Aggregate Input 1].Columns[agrupa]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="agrupa"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[agrupa]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Agrupacion\Aggregate.Outputs[Aggregate Output 1]"
+                  name="Aggregate Output 1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the approximate number of group by keys that the aggregation produces. Low indicates 500,000 key values, Medium indicates 5 million key values, and High indicates more than 25 million key values. Unspecified indicates no KeyScale value is used."
+                      name="KeyScale"
+                      typeConverter="KeyScaleType">0</property>
+                    <property
+                      dataType="System.Null"
+                      description="Specifies the exact number of group by keys that the aggregation produces. If a KeyScale value is specified, the value in Keys takes precedence."
+                      name="Keys" />
+                  </properties>
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Aggregate.Outputs[Aggregate Output 1].Columns[agrupa]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Aggregate.Outputs[Aggregate Output 1].Columns[agrupa]"
+                      name="agrupa">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column used in the aggregation."
+                          name="AggregationColumnId">#{Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[agrupa]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the type of aggregation."
+                          name="AggregationType"
+                          typeConverter="AggregationType">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Indicates whether the column requires special handling because it may contain oversized data or it requires precision beyond a float data type."
+                          name="IsBig">1</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the string comparison options."
+                          name="AggregationComparisonFlags">0</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Agrupacion\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF_Agrupacion\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Agrupacion\Conditional Split.Inputs[Conditional Split Input].Columns[agrupacion_transf]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="agrupacion_transf"
+                      lineageId="Package\DF_Agrupacion\Data Conversion.Outputs[Data Conversion Output].Columns[agrupacion_transf]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Agrupacion\Conditional Split.Outputs[Case 2]"
+                  description="Output 2 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Case 2"
+                  synchronousInputId="Package\DF_Agrupacion\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">[ISNULL](#{Package\DF_Agrupacion\Data Conversion.Outputs[Data Conversion Output].Columns[agrupacion_transf]}) ==  FALSE  &amp;&amp; #{Package\DF_Agrupacion\Data Conversion.Outputs[Data Conversion Output].Columns[agrupacion_transf]} != "" &amp;&amp; [LEN](#{Package\DF_Agrupacion\Data Conversion.Outputs[Data Conversion Output].Columns[agrupacion_transf]}) &gt; 2</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">ISNULL(agrupacion_transf) ==  FALSE  &amp;&amp; agrupacion_transf != "" &amp;&amp; LEN(agrupacion_transf) &gt; 2</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Agrupacion\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\DF_Agrupacion\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Agrupacion\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DF_Agrupacion\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Agrupacion\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Agrupacion\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Agrupacion\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF_Agrupacion\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Agrupacion\Data Conversion.Inputs[Data Conversion Input].Columns[agrupa]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="agrupa"
+                      lineageId="Package\DF_Agrupacion\Aggregate.Outputs[Aggregate Output 1].Columns[agrupa]" />
+                    <inputColumn
+                      refId="Package\DF_Agrupacion\Data Conversion.Inputs[Data Conversion Input].Columns[Derived Column 1]"
+                      cachedDataType="wstr"
+                      cachedLength="2"
+                      cachedName="Derived Column 1"
+                      lineageId="Package\DF_Agrupacion\Derived Column.Outputs[Derived Column Output].Columns[Derived Column 1]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Agrupacion\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DF_Agrupacion\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Data Conversion.Outputs[Data Conversion Output].Columns[agrupacion_transf]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\DF_Agrupacion\Data Conversion.Outputs[Data Conversion Output].Columns[agrupacion_transf]"
+                      name="agrupacion_transf"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF_Agrupacion\Aggregate.Outputs[Aggregate Output 1].Columns[agrupa]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Derived Column 1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\DF_Agrupacion\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of Derived Column 1]"
+                      name="Copy of Derived Column 1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DF_Agrupacion\Derived Column.Outputs[Derived Column Output].Columns[Derived Column 1]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Agrupacion\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DF_Agrupacion\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Agrupacion\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Agrupacion\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Agrupacion\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DF_Agrupacion\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Agrupacion\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DF_Agrupacion\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Derived Column.Outputs[Derived Column Output].Columns[Derived Column 1]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="2"
+                      lineageId="Package\DF_Agrupacion\Derived Column.Outputs[Derived Column Output].Columns[Derived Column 1]"
+                      name="Derived Column 1"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"NA"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"NA"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF_Agrupacion\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DF_Agrupacion\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Agrupacion\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Agrupacion\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Agrupacion\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Manizales en cifras$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Agrupacion\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[genero]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].ExternalColumns[genero]"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[genero]"
+                      name="genero"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[agrupa]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].ExternalColumns[agrupa]"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[agrupa]"
+                      name="agrupa"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[valor]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].ExternalColumns[valor]"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[valor]"
+                      name="valor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[mes]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].ExternalColumns[mes]"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[mes]"
+                      name="mes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[indicador]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].ExternalColumns[indicador]"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[indicador]"
+                      name="indicador"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[año]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].ExternalColumns[año]"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[año]"
+                      name="año"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[area]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].ExternalColumns[area]"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[area]"
+                      name="area"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[categoria]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].ExternalColumns[categoria]"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[categoria]"
+                      name="categoria"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].ExternalColumns[genero]"
+                      dataType="wstr"
+                      length="255"
+                      name="genero" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].ExternalColumns[agrupa]"
+                      dataType="wstr"
+                      length="255"
+                      name="agrupa" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].ExternalColumns[valor]"
+                      dataType="r8"
+                      name="valor" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].ExternalColumns[mes]"
+                      dataType="wstr"
+                      length="255"
+                      name="mes" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].ExternalColumns[indicador]"
+                      dataType="wstr"
+                      length="255"
+                      name="indicador" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].ExternalColumns[año]"
+                      dataType="r8"
+                      name="año" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].ExternalColumns[area]"
+                      dataType="wstr"
+                      length="255"
+                      name="area" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].ExternalColumns[categoria]"
+                      dataType="wstr"
+                      length="255"
+                      name="categoria" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[genero]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[genero]"
+                      name="genero" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[agrupa]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[agrupa]"
+                      name="agrupa" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[valor]"
+                      dataType="r8"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[valor]"
+                      name="valor" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[mes]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[mes]"
+                      name="mes" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[indicador]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[indicador]"
+                      name="indicador" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[año]"
+                      dataType="r8"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[año]"
+                      name="año" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[area]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[area]"
+                      name="area" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[categoria]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Error Output].Columns[categoria]"
+                      name="categoria" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Agrupacion\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Dim_Agrupacion]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF_Agrupacion\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-54L8G8U.OBSERVATORIO_MUNICIPIOS]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-54L8G8U.OBSERVATORIO_MUNICIPIOS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF_Agrupacion\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Agrupacion\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[agrupacion_transf]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="agrupacion_transf"
+                      externalMetadataColumnId="Package\DF_Agrupacion\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Agrupacion]"
+                      lineageId="Package\DF_Agrupacion\Data Conversion.Outputs[Data Conversion Output].Columns[agrupacion_transf]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF_Agrupacion\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Agrupacion_SKey]"
+                      dataType="i4"
+                      name="Agrupacion_SKey" />
+                    <externalMetadataColumn
+                      refId="Package\DF_Agrupacion\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Agrupacion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Agrupacion" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Agrupacion\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF_Agrupacion\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF_Agrupacion\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF_Agrupacion\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF_Agrupacion\Sort"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+              name="Sort"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the maximum number of threads to use for sorting."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DF_Agrupacion\Sort.Inputs[Sort Input]"
+                  name="Sort Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF_Agrupacion\Sort.Inputs[Sort Input].Columns[area]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="area"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[area]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Agrupacion\Sort.Inputs[Sort Input].Columns[categoria]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="categoria"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[categoria]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Agrupacion\Sort.Inputs[Sort Input].Columns[genero]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="genero"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[genero]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Agrupacion\Sort.Inputs[Sort Input].Columns[agrupa]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="agrupa"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[agrupa]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Agrupacion\Sort.Inputs[Sort Input].Columns[valor]"
+                      cachedDataType="r8"
+                      cachedName="valor"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[valor]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Agrupacion\Sort.Inputs[Sort Input].Columns[mes]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="mes"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[mes]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Agrupacion\Sort.Inputs[Sort Input].Columns[indicador]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="indicador"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[indicador]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF_Agrupacion\Sort.Inputs[Sort Input].Columns[año]"
+                      cachedDataType="r8"
+                      cachedName="año"
+                      lineageId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[año]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the sort order of the column."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF_Agrupacion\Sort.Outputs[Sort Output]"
+                  isSorted="true"
+                  name="Sort Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[area]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[area]"
+                      name="area">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[area]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[categoria]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[categoria]"
+                      name="categoria">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[categoria]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[genero]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[genero]"
+                      name="genero">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[genero]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[agrupa]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[agrupa]"
+                      name="agrupa"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[agrupa]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[valor]"
+                      dataType="r8"
+                      lineageId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[valor]"
+                      name="valor">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[valor]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[mes]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[mes]"
+                      name="mes">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[mes]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[indicador]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[indicador]"
+                      name="indicador">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[indicador]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[año]"
+                      dataType="r8"
+                      lineageId="Package\DF_Agrupacion\Sort.Outputs[Sort Output].Columns[año]"
+                      name="año">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column that is associated with this output column."
+                          name="SortColumnId">#{Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output].Columns[año]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF_Agrupacion.Paths[Aggregate Output 1]"
+              endId="Package\DF_Agrupacion\Derived Column.Inputs[Derived Column Input]"
+              name="Aggregate Output 1"
+              startId="Package\DF_Agrupacion\Aggregate.Outputs[Aggregate Output 1]" />
+            <path
+              refId="Package\DF_Agrupacion.Paths[Case 2]"
+              endId="Package\DF_Agrupacion\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Case 2"
+              startId="Package\DF_Agrupacion\Conditional Split.Outputs[Case 2]" />
+            <path
+              refId="Package\DF_Agrupacion.Paths[Data Conversion Output]"
+              endId="Package\DF_Agrupacion\Conditional Split.Inputs[Conditional Split Input]"
+              name="Data Conversion Output"
+              startId="Package\DF_Agrupacion\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DF_Agrupacion.Paths[Derived Column Output]"
+              endId="Package\DF_Agrupacion\Data Conversion.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\DF_Agrupacion\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DF_Agrupacion.Paths[Excel Source Output]"
+              endId="Package\DF_Agrupacion\Sort.Inputs[Sort Input]"
+              name="Excel Source Output"
+              startId="Package\DF_Agrupacion\Excel Source.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\DF_Agrupacion.Paths[Sort Output]"
+              endId="Package\DF_Agrupacion\Aggregate.Inputs[Aggregate Input 1]"
+              name="Sort Output"
+              startId="Package\DF_Agrupacion\Sort.Outputs[Sort Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{DB3B2771-A6CF-43CE-AB93-3B456B51C4C3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{237AC2E2-70DC-4DF6-8C37-216A681AE29C}"
+          SQLTask:SqlStatementSource="INSERT INTO Dim_Agrupacion (Agrupacion) VALUES ('NA');&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\TMP_DELETE"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1EB4DF59-8F2C-4D89-A45F-7334E0D9DE85}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="TMP_DELETE"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{237AC2E2-70DC-4DF6-8C37-216A681AE29C}"
+          SQLTask:SqlStatementSource="DBCC CHECKIDENT ('Dim_Agrupacion', RESEED, 0);&#xA;&#xA;DELETE FROM Municipio_Stats;&#xA;DELETE FROM Dim_Agrupacion;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{E1410664-114B-4B91-9D4E-088ECBFE9530}"
+      DTS:From="Package\TMP_DELETE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF_Agrupacion" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{F587B678-774B-45A1-B92B-00BCFBB1B882}"
+      DTS:From="Package\DF_Agrupacion"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Execute SQL Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="153.333333333334,42.6666666666667"
+          Id="Package\DF_Agrupacion"
+          TopLeft="298.124995557592,175.842108572949" />
+        <NodeLayout
+          Size="168,42.6666666666667"
+          Id="Package\Execute SQL Task"
+          TopLeft="264.374996060506,289.421058079212" />
+        <NodeLayout
+          Size="149.333333333334,42"
+          Id="Package\TMP_DELETE"
+          TopLeft="297.499995566905,46.5263166652161" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="373.479162228915,88.5263166652161">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,87.3157919077329"
+              Start="0,0"
+              End="0,79.8157919077329">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,79.8157919077329" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="374.791662224259,218.508775239616">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-26.4166661637531,70.9122828395968"
+              Start="0,0"
+              End="-26.4166661637531,63.4122828395968">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.4561414197984" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.4561414197984"
+                    Point2="0,35.4561414197984"
+                    Point3="-4,35.4561414197984" />
+                  <mssgle:LineSegment
+                    End="-22.4166661637531,35.4561414197984" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.4166661637531,35.4561414197984"
+                    Point2="-26.4166661637531,35.4561414197984"
+                    Point3="-26.4166661637531,39.4561414197984" />
+                  <mssgle:LineSegment
+                    End="-26.4166661637531,63.4122828395968" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF_Agrupacion">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="158.666666666667,42.6666666666667"
+          Id="Package\DF_Agrupacion\Data Conversion"
+          TopLeft="404.908002624409,417.952920451418" />
+        <NodeLayout
+          Size="142.666666666667,42.6666666666667"
+          Id="Package\DF_Agrupacion\Excel Source"
+          TopLeft="426.78029667078,40.4098891178727" />
+        <NodeLayout
+          Size="156,42.6666666666667"
+          Id="Package\DF_Agrupacion\Derived Column"
+          TopLeft="229.999996572733,349.175439459355" />
+        <NodeLayout
+          Size="98.6666666666667,42.6666666666667"
+          Id="Package\DF_Agrupacion\Sort"
+          TopLeft="452.222215483586,160.775654275538" />
+        <NodeLayout
+          Size="174.666666666667,42.6666666666667"
+          Id="Package\DF_Agrupacion\OLE DB Destination"
+          TopLeft="395.488810845575,636.355294122566" />
+        <NodeLayout
+          Size="129.333333333334,42.6666666666667"
+          Id="Package\DF_Agrupacion\Aggregate"
+          TopLeft="444.943175188012,268.28655475743" />
+        <NodeLayout
+          Size="157.333333333334,42.6666666666667"
+          Id="Package\DF_Agrupacion\Conditional Split"
+          TopLeft="387.4999942258,543.947378170127" />
+        <EdgeLayout
+          Id="Package\DF_Agrupacion.Paths[Sort Output]"
+          TopLeft="501.555548816919,203.442320942205">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.05429303775981,64.8442338152257"
+              Start="0,0"
+              End="8.05429303775981,57.3442338152257">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.4221169076129" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.4221169076129"
+                    Point2="0,32.4221169076129"
+                    Point3="4,32.4221169076129" />
+                  <mssgle:LineSegment
+                    End="4.05429303775981,32.4221169076129" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.05429303775981,32.4221169076129"
+                    Point2="8.05429303775981,32.4221169076129"
+                    Point3="8.05429303775981,36.4221169076129" />
+                  <mssgle:LineSegment
+                    End="8.05429303775981,57.3442338152257" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Agrupacion.Paths[Excel Source Output]"
+          TopLeft="499.834589410516,83.0765557845394">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,77.6990984909986"
+              Start="0,0"
+              End="0,70.1990984909986">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,70.1990984909986" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Agrupacion.Paths[Derived Column Output]"
+          TopLeft="307.999996572733,391.842106126022">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="176.24133938501,26.110814325396"
+              Start="0,0"
+              End="176.24133938501,18.610814325396">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.05540716269797" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.05540716269797"
+                    Point2="0,13.055407162698"
+                    Point3="4,13.055407162698" />
+                  <mssgle:LineSegment
+                    End="172.24133938501,13.055407162698" />
+                  <mssgle:CubicBezierSegment
+                    Point1="172.24133938501,13.055407162698"
+                    Point2="176.24133938501,13.055407162698"
+                    Point3="176.24133938501,17.055407162698" />
+                  <mssgle:LineSegment
+                    End="176.24133938501,18.610814325396" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Agrupacion.Paths[Data Conversion Output]"
+          TopLeft="484.241335957743,460.619587118084">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-18.0746750652759,83.3277910520425"
+              Start="0,0"
+              End="-18.0746750652759,75.8277910520425">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.6638955260213" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,37.6638955260213"
+                    Point2="0,41.6638955260213"
+                    Point3="-4,41.6638955260213" />
+                  <mssgle:LineSegment
+                    End="-14.0746750652759,41.6638955260213" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14.0746750652759,41.6638955260213"
+                    Point2="-18.0746750652759,41.6638955260213"
+                    Point3="-18.0746750652759,45.6638955260213" />
+                  <mssgle:LineSegment
+                    End="-18.0746750652759,75.8277910520425" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Agrupacion.Paths[Case 2]"
+          TopLeft="466.166660892467,586.614044836793">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="16.6554832864415,49.7412492857725"
+              Start="0,0"
+              End="16.6554832864415,42.2412492857725">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.8706246428862" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.8706246428862"
+                    Point2="0,24.8706246428862"
+                    Point3="4,24.8706246428862" />
+                  <mssgle:LineSegment
+                    End="12.6554832864415,24.8706246428862" />
+                  <mssgle:CubicBezierSegment
+                    Point1="12.6554832864415,24.8706246428862"
+                    Point2="16.6554832864415,24.8706246428862"
+                    Point3="16.6554832864415,28.8706246428862" />
+                  <mssgle:LineSegment
+                    End="16.6554832864415,42.2412492857725" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-7.07589116927925,29.8706246428862,30.807265625,9.5732421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DF_Agrupacion.Paths[Aggregate Output 1]"
+          TopLeft="509.609841854679,310.953221424097">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-201.609845281946,38.2222180352584"
+              Start="0,0"
+              End="-201.609845281946,30.7222180352584">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.1111090176292" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.1111090176292"
+                    Point2="0,19.1111090176292"
+                    Point3="-4,19.1111090176292" />
+                  <mssgle:LineSegment
+                    End="-197.609845281946,19.1111090176292" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-197.609845281946,19.1111090176292"
+                    Point2="-201.609845281946,19.1111090176292"
+                    Point3="-201.609845281946,23.1111090176292" />
+                  <mssgle:LineSegment
+                    End="-201.609845281946,30.7222180352584" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Agrupacion\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF_Agrupacion\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
