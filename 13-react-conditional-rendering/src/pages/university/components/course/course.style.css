@@ -1,0 +1,18 @@
+.course {
+    margin: 0;
+    border-top: 1px solid #282c34;
+    border-bottom: 1px solid #282c34;
+}
+
+.course .flex.justify-space-between {
+    padding: 0 18px 0 32px;
+}
+
+h4 {
+    padding: 15px 30px 5px;
+}
+
+header {
+    position: sticky;
+    top: 0;
+}

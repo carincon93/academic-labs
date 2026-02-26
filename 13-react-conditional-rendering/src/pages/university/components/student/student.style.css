@@ -1,0 +1,27 @@
+.student {
+    padding: 20px;
+}
+
+figure {
+    margin: 0 15px 0 0;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 100%;
+}
+
+img {
+    width: 276%;
+}
+
+img.male {
+    object-position: -3px -62px;
+}
+
+img.female {
+    object-position: -3px -19px;
+}
+
+.min-w-200 {
+    min-width: 240px;
+}

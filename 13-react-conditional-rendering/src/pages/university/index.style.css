@@ -1,0 +1,7 @@
+.university {
+    background-color: white;
+    border-radius: 8px;
+    width: 500px;
+    min-height: 90vh;
+    font-size: calc(3px + 2vmin);
+}
