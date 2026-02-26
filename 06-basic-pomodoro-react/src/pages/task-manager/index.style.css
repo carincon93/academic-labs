@@ -1,0 +1,12 @@
+.todos-container {
+    width: 500px;
+}
+
+.complete-button {
+    bottom: -8px;
+    position: relative;
+}
+
+.complete-button:hover {
+    opacity: 1;
+}

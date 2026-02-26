@@ -1,0 +1,17 @@
+.task-container {
+    background: white;
+    border-radius: 7px;
+    color: #282c34;
+    padding: 20px;
+    font-size: 18px;
+}
+
+.category {
+    min-width: 95px;
+    display: block;
+}
+
+.first-task {
+    border-left: 10px solid #cddc39;
+    ;
+}

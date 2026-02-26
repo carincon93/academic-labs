@@ -1,0 +1,14 @@
+.card {
+    background: #ffffff1c;
+    padding: 20px;
+    border-radius: 7px;
+}
+
+button {
+    padding: 9px;
+    border: 0;
+    background: #cddc39;
+    border-radius: 3px;
+    min-width: 100px;
+    margin-right: 10px;
+}
